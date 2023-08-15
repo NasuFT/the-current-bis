@@ -32,7 +32,7 @@ export interface Gearset {
 export interface GearsetInfo {
   id: string;
   type: "bis" | "prog" | "others";
-  jobID: JobID;
+  jobID: JobID | JobID[];
   name: string;
   gear: Gearset;
 }

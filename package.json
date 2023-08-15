@@ -11,7 +11,9 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxtjs/tailwindcss": "^6.8.0",
+    "@types/jsonfile": "^6.1.1",
     "@types/node": "^18.17.1",
+    "jsonfile": "^6.1.0",
     "nuxt": "^3.6.5"
   },
   "dependencies": {

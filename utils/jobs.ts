@@ -1,4 +1,4 @@
-import data from "@/constants/jobs.json";
+import data from "../constants/jobs.json";
 
 const jobs: [string, string, number][] = [];
 data.forEach((job) =>

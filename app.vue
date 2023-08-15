@@ -13,32 +13,15 @@
 </template>
 
 <script setup lang="ts">
-import { GearsetInfo, JobID, GearsetID } from "types";
+import { JobID, GearsetID } from "types";
 
-const { data: jobs } = await useFetch("/api/jobs");
+const jobs = useJobs();
 const selectedJobID = ref<JobID>();
 
-const { data: gearsetsTest } = await useFetch("/api/bis");
-watch(gearsetsTest, () => {});
-
-const gearsets = ref<GearsetInfo[]>([]);
+const gearsets = computed(() => useGearsets(selectedJobID.value));
 const selectedGearsetID = ref<GearsetID>();
-// fetch gearsets for job
-watch(selectedJobID, async () => {
-  if (selectedJobID.value === undefined) {
-    return;
-  }
-
-  console.log("fetching");
-
-  const { data } = await useFetch(`/api/bis/${selectedJobID.value}`);
-  if (!data.value) {
-    return;
-  }
-
-  console.log("fetched");
-
-  gearsets.value = data.value;
+watch(selectedGearsetID, () => {
+  console.log(selectedGearsetID.value);
 });
 </script>
 
