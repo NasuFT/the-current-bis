@@ -1,44 +1,40 @@
-export interface Role {
-  title: string;
-  value: string;
-  toString: () => string;
+import { JobID } from "./job";
+
+export type EquipmentID = number;
+export type MateriaID = number;
+export type FoodID = number;
+export type GearsetID = string;
+
+export interface Equipment {
+  id: EquipmentID;
 }
 
-export interface Job {
-  title: string;
-  value: string;
-  iconImgSrc: string;
-  code: string;
-  toString: () => string;
-  role: Role;
+export interface Food {
+  id: FoodID;
 }
-
-export interface Gear {
-  id: string;
-}
-
-export interface Food {}
 
 export interface Gearset {
-  weapon: Gear;
-  head: Gear | null;
-  body: Gear | null;
-  hands: Gear | null;
-  legs: Gear | null;
-  feet: Gear | null;
-  offHand: Gear | null;
-  ears: Gear | null;
-  neck: Gear | null;
-  wrist: Gear | null;
-  ringL: Gear | null;
-  ringR: Gear | null;
-  food: Food | null;
+  weapon: EquipmentID;
+  head: EquipmentID | null;
+  body: EquipmentID | null;
+  hands: EquipmentID | null;
+  legs: EquipmentID | null;
+  feet: EquipmentID | null;
+  offHand: EquipmentID | null;
+  ears: EquipmentID | null;
+  neck: EquipmentID | null;
+  wrist: EquipmentID | null;
+  ringL: EquipmentID | null;
+  ringR: EquipmentID | null;
+  food: FoodID | null;
 }
 
 export interface GearsetInfo {
   id: string;
   type: "bis" | "prog" | "others";
-  job: Job["value"] | Job["value"][];
+  jobID: JobID;
   name: string;
   gear: Gearset;
 }
+
+export * from "./job";

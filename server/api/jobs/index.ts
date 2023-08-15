@@ -1,5 +1,5 @@
-import { Job } from "types";
-import jobsData from "../constants/jobs.json";
+import jobsData from "@/constants/jobs.json";
+import { Job } from "@/types";
 
 const getRoleLabel = (value: string) => {
   switch (value) {
@@ -18,21 +18,20 @@ const getRoleLabel = (value: string) => {
   }
 };
 
-export const useJobs = () => {
-  const data: Job[] = jobsData.map((job) => {
+export default defineEventHandler((): Job[] => {
+  return jobsData.map((job) => {
     const value = job.title.toLowerCase().replace(/\s+/g, "");
 
     return {
-      value,
+      id: job.id,
       title: job.title,
-      iconImgSrc: `/img/icons/jobs/${value}.png`,
-      code: job.code,
+      value,
       role: {
         title: getRoleLabel(job.role),
         value: job.role,
       },
+      code: job.code,
+      iconImgSrc: `/img/icons/jobs/${value}.png`,
     };
   });
-
-  return { data };
-};
+});
