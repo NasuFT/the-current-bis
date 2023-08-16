@@ -7,3 +7,4 @@ export const uniqueFilter = <T extends Object>(
 };
 
 export * from "./jobs";
+export * from "./gearset";

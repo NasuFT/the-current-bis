@@ -27,7 +27,7 @@ const pickData = (
       hands: data.hands,
       legs: data.legs,
       feet: data.feet,
-      offHand: data.offHand,
+      offhand: data.offHand,
       ears: data.ears,
       neck: data.neck,
       wrist: data.wrists,

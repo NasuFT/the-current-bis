@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   typescript: {
     shim: false,
   },
-  modules: ["@nuxtjs/tailwindcss"],
+  modules: ["@nuxt/image", "@nuxtjs/tailwindcss"],
   css: [
     "normalize.css/normalize.css",
     "primevue/resources/themes/lara-dark-indigo/theme.css",
