@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   modules: ["@nuxt/image", "@nuxtjs/tailwindcss"],
   css: [
     "normalize.css/normalize.css",
-    "primevue/resources/themes/lara-dark-indigo/theme.css",
+    "primevue/resources/themes/md-dark-indigo/theme.css",
   ],
   build: {
     transpile: ["primevue"],
