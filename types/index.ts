@@ -62,16 +62,21 @@ export type Gearset = {
   weapon: EquipmentID;
 };
 
+export type GearsetMateriaFull = {
+  [key in GearsetSlot]?: Materia[];
+};
+
+export type GearsetMateria = {
+  [id in GearsetSlot]?: MateriaID[];
+};
+
 export type GearsetFull = {
   [id in GearsetSlot]: Equipment | null;
 } & {
   food: Food | null;
   weapon: Equipment;
+  materia?: GearsetMateriaFull;
 };
-
-export interface GearsetMateria {
-  [id: EquipmentID]: MateriaID[];
-}
 
 export interface GearsetInfo {
   id: string;

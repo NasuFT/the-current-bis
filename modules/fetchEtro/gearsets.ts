@@ -1,6 +1,19 @@
 import { $fetch } from "ofetch";
 import { getCodeToJobID } from "../../utils";
-import { GearsetInfo } from "../../types";
+import { GearsetInfo, MateriaID } from "../../types";
+
+const transformMateriaData = (data: any): MateriaID[] | undefined => {
+  if (data === undefined) return undefined;
+
+  let count = 0;
+  const ret: MateriaID[] = [];
+
+  while (data[`${++count}`] !== undefined) {
+    ret.push(data[`${count}`]);
+  }
+
+  return ret;
+};
 
 const transformData = (
   data: any,
@@ -27,6 +40,20 @@ const transformData = (
       ringL: data.fingerL,
       ringR: data.fingerR,
       food: data.food,
+    },
+    materia: {
+      weapon: transformMateriaData(data.materia[data.weapon]),
+      head: transformMateriaData(data.materia[data.head]),
+      body: transformMateriaData(data.materia[data.body]),
+      hands: transformMateriaData(data.materia[data.hands]),
+      legs: transformMateriaData(data.materia[data.legs]),
+      feet: transformMateriaData(data.materia[data.feet]),
+      offhand: transformMateriaData(data.materia[data.offHand]),
+      ears: transformMateriaData(data.materia[data.ears]),
+      neck: transformMateriaData(data.materia[data.neck]),
+      wrist: transformMateriaData(data.materia[data.wrists]),
+      ringL: transformMateriaData(data.materia[`${data.fingerL}L`]),
+      ringR: transformMateriaData(data.materia[`${data.fingerR}R`]),
     },
   }));
 };

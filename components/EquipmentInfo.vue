@@ -25,8 +25,6 @@
         :pt="{
           headerAction: {
             style: {
-              paddingLeft: '0.25rem',
-              paddingRight: '0.25rem',
               borderWidth: 0,
             },
           },
@@ -38,11 +36,6 @@
           content: {
             style: {
               borderWidth: 0,
-            },
-          },
-          headerIcon: {
-            style: {
-              padding: '2px',
             },
           },
         }"
@@ -74,12 +67,6 @@ const props = defineProps<Props>();
 </script>
 
 <style scoped>
-:deep(.p-inputtext) {
-  border: 0;
-  background-color: inherit;
-  opacity: 1;
-}
-
 .equipment-container {
   background-color: var(--surface-card);
 }
