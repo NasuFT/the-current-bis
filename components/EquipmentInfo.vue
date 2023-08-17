@@ -2,14 +2,24 @@
   <div class="equipment-container flex flex-col rounded p-2 w-80">
     <div class="flex flex-row justify-between items-end">
       <p class="font-medium text-lg ml-4">{{ getSlotLabel(props.slot) }}</p>
-      <p class="text-xs">i660</p>
+      <p class="text-xs">{{ `i${props.equipment.itemLevel}` }}</p>
     </div>
     <div class="equipment-info rounded p-2 mt-4 flex flex-row items-center">
-      <!-- <nuxt-img :src="props.iconSrc" /> -->
-      <Skeleton size="2rem" class="mr-2"></Skeleton>
-      <p class="text-sm">Augmented Credendum Circlet of Casting</p>
+      <nuxt-img
+        :src="equipment.iconSrc"
+        width="32"
+        height="32"
+        fit="contain"
+        class="mr-2"
+      >
+        <Skeleton size="2rem"></Skeleton>
+      </nuxt-img>
+      <p class="text-sm my-2">{{ props.equipment.name }}</p>
     </div>
-    <Accordion :active-index="0">
+    <Accordion
+      v-if="props.materia && props.materia.length > 0"
+      :active-index="0"
+    >
       <AccordionTab
         header="Materia"
         :pt="{
@@ -38,8 +48,13 @@
         }"
       >
         <ul class="list-disc list-inside">
-          <li class="leading-7">SPS +36</li>
-          <li class="leading-7">SPS +36</li>
+          <li
+            class="leading-7"
+            v-for="materia in props.materia"
+            :key="materia.id"
+          >
+            {{ `${materia.stat} +${materia.value}` }}
+          </li>
         </ul>
       </AccordionTab>
     </Accordion>
@@ -50,7 +65,7 @@
 import { Equipment, Materia, GearsetSlot } from "types";
 
 interface Props {
-  equipment?: Equipment;
+  equipment: Equipment;
   slot: GearsetSlot;
   materia?: Materia[];
 }

@@ -16,10 +16,15 @@
 <script setup lang="ts">
 import { JobID, GearsetID } from "types";
 
-const jobs = useJobs();
+const { data: jobs } = await useFetch("/api/job");
 const selectedJobID = ref<JobID>();
-
-const gearsets = computed(() => useGearsets(selectedJobID.value));
+const { data: gearsets } = await useFetch("/api/gearset", {
+  query: { jobID: selectedJobID },
+  immediate: false,
+});
+watch(gearsets, () => {
+  console.log(gearsets.value);
+});
 const selectedGearsetID = ref<GearsetID>();
 </script>
 

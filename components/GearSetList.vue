@@ -14,7 +14,7 @@
 import { GearsetID, GearsetInfo } from "types";
 
 interface Props {
-  gearsets: GearsetInfo[];
+  gearsets: GearsetInfo[] | null;
 }
 
 interface Emits {

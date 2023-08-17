@@ -25,6 +25,7 @@ export interface Equipment {
   name: string;
   iconSrc: string;
   itemLevel: number;
+  slot: EquipmentSlot;
 }
 
 export interface Materia {
@@ -59,6 +60,13 @@ export type Gearset = {
 } & {
   food: FoodID | null;
   weapon: EquipmentID;
+};
+
+export type GearsetFull = {
+  [id in GearsetSlot]: Equipment | null;
+} & {
+  food: Food | null;
+  weapon: Equipment;
 };
 
 export interface GearsetMateria {
